@@ -42,32 +42,7 @@
                 <div class="sticky top-24 space-y-4">
                     <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-sm dark:shadow-none border border-gray-200 dark:border-zinc-700 p-4">
                         <h3 class="font-bold text-lg text-gray-800 dark:text-zinc-200 mb-3">Filters</h3>
-                        @php
-                            $options = auth()->check() ? [
-                                'public' => __('messages.t_public_following'),
-                                'private' => __('messages.t_private_following'),
-                                'my_purchases' => __('messages.t_my_purchases')
-                            ] : [
-                                'public' => __('messages.t_public_following')
-                            ];
-                        @endphp
 
-                        @foreach ($options as $key => $label)
-                            <div class="flex items-center justify-between p-3 rounded-lg cursor-pointer transition
-                                {{ $filter_pblc_prvt === $key
-                                    ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300'
-                                    : 'hover:bg-gray-100 dark:hover:bg-zinc-700 text-gray-700 dark:text-zinc-300' }}"
-                                 @auth() wire:click="selectOption('{{ $key }}')" @endauth>
-                                <div class="flex items-center">
-                                    <x-icon name="{{ $key === 'public' ? 'users' : ($key === 'private' ? 'lock-closed' : 'shopping-bag') }}"
-                                                       class="w-5 h-5 mr-3" />
-                                    <span class="text-sm font-medium">{{ $label }}</span>
-                                </div>
-                                @if ($filter_pblc_prvt === $key)
-                                    <x-icon name="check" class="w-4 h-4 text-primary-600 dark:text-primary-400" />
-                                @endif
-                            </div>
-                        @endforeach
                     </div>
                 </div>
             </div>
@@ -221,7 +196,7 @@
                     @empty
                         <div class="col-span-3 flex flex-col items-center justify-center py-12">
                             <div class="w-24 h-24 bg-gray-100 dark:bg-zinc-700 rounded-full flex items-center justify-center mb-4">
-                                <x-icon name="video-camera" class="w-10 h-10 text-gray-400 dark:text-zinc-500" />
+                                <x-icon name="tabler-video" class="w-10 h-10 text-gray-400 dark:text-zinc-500" />
                             </div>
                             <h3 class="text-lg font-medium text-gray-700 dark:text-zinc-300 mb-2">No streams available</h3>
                             <p class="text-gray-500 dark:text-zinc-400 text-center max-w-md mx-auto">

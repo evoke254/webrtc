@@ -4,12 +4,17 @@ namespace App\Livewire\Frontend;
 
 use Livewire\Component;
 use App\Models\LiveStream;
+
+use Mary\Traits\Toast;
+
+
 class LiveStreamFeed extends Component
 {
 
+    public $streams;
     public function mount()
     {
-//        dd('test');
+        $this->streams = LiveStream::all();
     }
 
     public function render()
